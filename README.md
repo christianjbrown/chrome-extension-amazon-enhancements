@@ -56,7 +56,7 @@ Then hit the reload arrow on the Christian's Amazon Enhancements card in `chrome
 
 No analytics, no tracking, no ads (ha), no accounts, and nothing phoning home. It never talks to the internet at all, so nothing about your shopping leaves your machine. It looks at the page, hides the sponsored bits, and that's it.
 
-## Hacking on it 🛠️
+## Development 🛠️
 
 It's TypeScript, bundled with esbuild, tested with Vitest.
 
