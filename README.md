@@ -1,4 +1,4 @@
-# Amazon Enhancements 📦
+# Amazon Enhancements Chrome Extension 📦
 
 A little Chrome extension that tidies up the bits of Amazon that bug me. Right now that's one thing, but it's built to collect more. No options page, no button, no settings. It just quietly makes Amazon nicer.
 
