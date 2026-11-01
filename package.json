@@ -2,6 +2,7 @@
   "name": "chrome-extension-amazon-enhancements",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "Chrome extension: small fixes for Amazon, starting with hiding sponsored results.",
   "type": "module",
   "scripts": {
