@@ -13,6 +13,13 @@ describe("AnyRule", () => {
     expect(rule.blocks(document.body)).toEqual([a, b, c]);
   });
 
+  it("lists a block more than one rule finds only once, where it first appears", () => {
+    const [a, b] = ["a", "b"].map((tag) => document.createElement(tag));
+    const rule = new AnyRule([fixed([a!, b!]), fixed([b!, a!]), fixed([a!])]);
+
+    expect(rule.blocks(document.body)).toEqual([a, b]);
+  });
+
   it("passes each rule the root it was given", () => {
     const inner = { blocks: vi.fn(() => []) };
     const root = document.createElement("div");
