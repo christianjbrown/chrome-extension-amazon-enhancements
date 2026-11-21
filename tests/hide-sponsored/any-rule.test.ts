@@ -1,5 +1,5 @@
 import type { SponsoredRule } from "../../src/hide-sponsored/sponsored-rule";
-import { AnyRule } from "../../src/hide-sponsored/sponsored-rule";
+import { AnyRule } from "../../src/hide-sponsored/any-rule";
 
 function fixed(blocks: Element[]): SponsoredRule {
   return { blocks: () => blocks };

@@ -2,7 +2,7 @@
 // The stylesheet goes in first, so a block marked while the page is still
 // arriving is never drawn.
 import type { Enhancement } from "../enhancement";
-import type { Watcher } from "./node-watcher";
+import type { Watcher } from "./watcher";
 import type { PageStyle } from "./page-style";
 import type { Scanner } from "./scanner";
 

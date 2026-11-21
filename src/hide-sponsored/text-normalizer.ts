@@ -2,10 +2,3 @@
 export interface TextNormalizer {
   normalize(text: string): string;
 }
-
-// Case and surrounding space do not make a different word.
-export class TrimmedLowercase implements TextNormalizer {
-  normalize(text: string): string {
-    return text.trim().toLocaleLowerCase();
-  }
-}

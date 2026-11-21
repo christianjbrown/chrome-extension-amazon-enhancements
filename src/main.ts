@@ -2,13 +2,13 @@
 // touches the page's globals.
 import type { Enhancement } from "./enhancement";
 import { HideSponsored } from "./hide-sponsored/hide-sponsored";
-import { SelectorFinder } from "./hide-sponsored/element-finder";
-import { AttributeHider } from "./hide-sponsored/hider";
+import { SelectorFinder } from "./hide-sponsored/selector-finder";
+import { AttributeHider } from "./hide-sponsored/attribute-hider";
 import { LabelRule } from "./hide-sponsored/label-rule";
 import { NodeWatcher } from "./hide-sponsored/node-watcher";
 import { SelectorLabels } from "./hide-sponsored/selector-labels";
-import { StyleElement } from "./hide-sponsored/page-style";
-import { SponsoredScanner } from "./hide-sponsored/scanner";
+import { StyleElement } from "./hide-sponsored/style-element";
+import { SponsoredScanner } from "./hide-sponsored/sponsored-scanner";
 import { HIDDEN } from "./hide-sponsored/hidden-marker";
 import {
   AD_BLOCKS,
@@ -21,8 +21,8 @@ import {
 } from "./hide-sponsored/sponsored-selectors";
 import { SPONSORED_WORDS } from "./hide-sponsored/sponsored-words";
 import { hidingStylesheet } from "./hide-sponsored/stylesheet";
-import { AnyRule } from "./hide-sponsored/sponsored-rule";
-import { TrimmedLowercase } from "./hide-sponsored/text-normalizer";
+import { AnyRule } from "./hide-sponsored/any-rule";
+import { TrimmedLowercase } from "./hide-sponsored/trimmed-lowercase";
 import { WordLabels } from "./hide-sponsored/word-labels";
 
 function hideSponsored(hidden: string): Enhancement {

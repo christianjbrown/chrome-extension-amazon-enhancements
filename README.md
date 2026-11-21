@@ -73,15 +73,16 @@ How it fits together, all in `src`:
 - **`enhancement.ts`** is the one-method interface every enhancement implements.
 - **`hide-sponsored/`** is the first enhancement:
   - **`hide-sponsored.ts`** adds the stylesheet, scans what's on the page, then watches for more.
-  - **`page-style.ts`** puts the stylesheet on the page.
+  - **`style-element.ts`** puts the stylesheet on the page.
   - **`node-watcher.ts`** reports elements Amazon adds, and labels whose text arrives late.
-  - **`scanner.ts`** hides every block a rule finds.
-  - **`sponsored-rule.ts`** is the rule interface, plus one that runs a list of rules.
+  - **`sponsored-scanner.ts`** hides every block a rule finds.
+  - **`any-rule.ts`** runs a list of rules and lists each block they find once.
   - **`label-rule.ts`** climbs from an ad label to the result or widget around it.
   - **`selector-labels.ts`** and **`word-labels.ts`** find the labels: by Amazon's classes, or by a label that just says "Sponsored".
-  - **`element-finder.ts`** and **`text-normalizer.ts`** are the lookup and the text comparison those use.
-  - **`hider.ts`** marks a block so the stylesheet hides it.
+  - **`selector-finder.ts`** and **`trimmed-lowercase.ts`** are the lookup and the text comparison those use.
+  - **`attribute-hider.ts`** marks a block so the stylesheet hides it.
   - **`sponsored-selectors.ts`**, **`sponsored-words.ts`** and **`stylesheet.ts`** are the markers, the words and the stylesheet itself.
+  - The interfaces each live in a file of their own: `page-style.ts`, `watcher.ts`, `scanner.ts`, `sponsored-rule.ts`, `label-finder.ts`, `element-finder.ts`, `text-normalizer.ts` and `hider.ts`.
 
 Every class gets its collaborators through its constructor, behind an interface, so each one is tested on its own with fakes. Adding the next enhancement means a new class and one more line in the list in `main.ts`. 🧩
 

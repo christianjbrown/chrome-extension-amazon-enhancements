@@ -1,5 +1,5 @@
-import { SelectorFinder } from "../../src/hide-sponsored/element-finder";
-import { TrimmedLowercase } from "../../src/hide-sponsored/text-normalizer";
+import { SelectorFinder } from "../../src/hide-sponsored/selector-finder";
+import { TrimmedLowercase } from "../../src/hide-sponsored/trimmed-lowercase";
 import { WordLabels } from "../../src/hide-sponsored/word-labels";
 
 const labels = new WordLabels(

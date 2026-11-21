@@ -1,4 +1,4 @@
-import { SelectorFinder } from "../../src/hide-sponsored/element-finder";
+import { SelectorFinder } from "../../src/hide-sponsored/selector-finder";
 
 function html(markup: string): Element {
   const host = document.createElement("div");
