@@ -4,7 +4,15 @@
 import { isElement } from "../node-guards";
 import type { Watcher } from "./watcher";
 
-export type ObserverFactory = (callback: MutationCallback) => MutationObserver;
+// The one thing the watcher asks of a MutationObserver: to start watching.
+interface NodeObserver {
+  observe(target: Node, options: MutationObserverInit): void;
+}
+
+// Makes an observer that hands each batch of changes to the callback.
+export type ObserverFactory = (
+  callback: (records: MutationRecord[]) => void,
+) => NodeObserver;
 
 const TEXT_NODE = 3;
 
