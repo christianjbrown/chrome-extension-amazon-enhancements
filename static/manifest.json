@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Christian's Amazon Enhancements",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Small fixes for Amazon. Sponsored results, carousels and ads are hidden, on every storefront.",
   "minimum_chrome_version": "126",
   "icons": {
