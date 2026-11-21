@@ -1,11 +1,11 @@
 // Reports every element Amazon adds to the page, as the parser streams it in
 // and as later results load. Text that arrives on its own is reported as its
 // parent, since that is when a label first reads "Sponsored".
+import { isElement } from "../node-guards";
 import type { Watcher } from "./watcher";
 
 export type ObserverFactory = (callback: MutationCallback) => MutationObserver;
 
-const ELEMENT_NODE = 1;
 const TEXT_NODE = 3;
 
 // Added nodes anywhere below the root, not attribute or text edits.
@@ -15,7 +15,7 @@ const OBSERVED_CHANGES: MutationObserverInit = {
 };
 
 function reportable(node: Node): Element | null {
-  return node.nodeType === ELEMENT_NODE ? (node as Element) : textParent(node);
+  return isElement(node) ? node : textParent(node);
 }
 
 // Text with words in it stands for its parent. Anything else is not reported.

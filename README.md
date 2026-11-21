@@ -71,9 +71,10 @@ How it fits together, all in `src`:
 
 - **`main.ts`** builds every enhancement and starts it. It's the only file that touches `document` or `MutationObserver`.
 - **`enhancement.ts`** is the one-method interface every enhancement implements.
+- **`node-guards.ts`** checks a node really is an element before anything reads it as one.
 - **`hide-sponsored/`** is the first enhancement:
   - **`hide-sponsored.ts`** adds the stylesheet, scans what's on the page, then watches for more.
-  - **`style-element.ts`** puts the stylesheet on the page.
+  - **`style-element.ts`** puts the stylesheet on the page, using only the page's `createElement` and root element.
   - **`node-watcher.ts`** reports elements Amazon adds, and labels whose text arrives late.
   - **`sponsored-scanner.ts`** hides every block a rule finds.
   - **`any-rule.ts`** runs a list of rules and lists each block they find once.
