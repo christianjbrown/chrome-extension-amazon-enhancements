@@ -1,17 +1,18 @@
-// A block is sponsored when it holds one of Amazon's ad markers. The marker is
-// usually a small label or attribute deep inside it, so this climbs from the
-// marker to the nearest enclosing block.
+// A block is sponsored when it holds one of Amazon's ad labels. The label is
+// usually small and deep inside it, so this climbs from each label to the
+// nearest enclosing block.
+import type { LabelFinder } from "./label-finder";
 import type { SponsoredRule } from "./sponsored-rule";
-import { within } from "./within";
 
 export class LabelRule implements SponsoredRule {
   constructor(
-    private readonly labels: string,
+    private readonly finder: LabelFinder,
     private readonly container: string,
   ) {}
 
   blocks(root: Element): Element[] {
-    return within(root, this.labels)
+    return this.finder
+      .labels(root)
       .map((label) => label.closest(this.container))
       .filter((block) => block !== null);
   }

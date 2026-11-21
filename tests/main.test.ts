@@ -1,6 +1,6 @@
 // Loads the content script into jsdom's page and checks every enhancement
 // works through the real wiring.
-import { HIDDEN } from "../src/hide-sponsored/sponsored-markers";
+import { HIDDEN } from "../src/hide-sponsored/hidden-marker";
 
 const result = (id: string, inner: string) =>
   `<div class="s-result-item" id="${id}" data-component-type="s-search-result">${inner}<h2>USB C cable</h2></div>`;

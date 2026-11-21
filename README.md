@@ -77,10 +77,11 @@ How it fits together, all in `src`:
   - **`node-watcher.ts`** reports elements Amazon adds, and labels whose text arrives late.
   - **`scanner.ts`** hides every block a rule finds.
   - **`sponsored-rule.ts`** is the rule interface, plus one that runs a list of rules.
-  - **`label-rule.ts`** climbs from an ad marker to the result or widget around it.
-  - **`text-label-rule.ts`** does the same for a label that just says "Sponsored".
+  - **`label-rule.ts`** climbs from an ad label to the result or widget around it.
+  - **`selector-labels.ts`** and **`word-labels.ts`** find the labels: by Amazon's classes, or by a label that just says "Sponsored".
+  - **`element-finder.ts`** and **`text-normalizer.ts`** are the lookup and the text comparison those use.
   - **`hider.ts`** marks a block so the stylesheet hides it.
-  - **`sponsored-markers.ts`** is the list of markers, words and the stylesheet itself.
+  - **`sponsored-selectors.ts`**, **`sponsored-words.ts`** and **`stylesheet.ts`** are the markers, the words and the stylesheet itself.
 
 Every class gets its collaborators through its constructor, behind an interface, so each one is tested on its own with fakes. Adding the next enhancement means a new class and one more line in the list in `main.ts`. 🧩
 

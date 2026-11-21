@@ -1,4 +1,4 @@
-import { within } from "../../src/hide-sponsored/within";
+import { SelectorFinder } from "../../src/hide-sponsored/element-finder";
 
 function html(markup: string): Element {
   const host = document.createElement("div");
@@ -6,16 +6,21 @@ function html(markup: string): Element {
   return host.firstElementChild!;
 }
 
-describe("within", () => {
+describe("SelectorFinder", () => {
   it("includes the root when it matches, ahead of matches below it", () => {
     const root = html(`<p class="x"><b class="x"></b><i></i></p>`);
 
-    expect(within(root, ".x")).toEqual([root, root.firstElementChild]);
+    expect(new SelectorFinder().find(root, ".x")).toEqual([
+      root,
+      root.firstElementChild,
+    ]);
   });
 
   it("leaves the root out when it does not match", () => {
     const root = html(`<p><b class="x"></b></p>`);
 
-    expect(within(root, ".x")).toEqual([root.firstElementChild]);
+    expect(new SelectorFinder().find(root, ".x")).toEqual([
+      root.firstElementChild,
+    ]);
   });
 });

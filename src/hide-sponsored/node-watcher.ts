@@ -10,6 +10,12 @@ export type ObserverFactory = (callback: MutationCallback) => MutationObserver;
 const ELEMENT_NODE = 1;
 const TEXT_NODE = 3;
 
+// Added nodes anywhere below the root, not attribute or text edits.
+const OBSERVED_CHANGES: MutationObserverInit = {
+  childList: true,
+  subtree: true,
+};
+
 function reportable(node: Node): Element | null {
   if (node.nodeType === ELEMENT_NODE) return node as Element;
   if (node.nodeType === TEXT_NODE && node.textContent?.trim())
@@ -31,6 +37,6 @@ export class NodeWatcher implements Watcher {
           if (element) changed(element);
         });
       }
-    }).observe(this.root, { childList: true, subtree: true });
+    }).observe(this.root, OBSERVED_CHANGES);
   }
 }

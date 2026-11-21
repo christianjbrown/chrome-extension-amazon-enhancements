@@ -1,6 +1,11 @@
+import { SelectorFinder } from "../../src/hide-sponsored/element-finder";
 import { LabelRule } from "../../src/hide-sponsored/label-rule";
+import { SelectorLabels } from "../../src/hide-sponsored/selector-labels";
 
-const rule = new LabelRule(".label, [data-ad]", ".card");
+const rule = new LabelRule(
+  new SelectorLabels(new SelectorFinder(), ".label, [data-ad]"),
+  ".card",
+);
 
 function page(markup: string): HTMLElement {
   document.body.innerHTML = markup;
