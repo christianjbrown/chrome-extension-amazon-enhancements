@@ -1,8 +1,6 @@
 // The stylesheet that does the hiding: Amazon's own ad blocks, plus every
-// block the scanner has marked.
-import { HIDDEN } from "./hidden-marker";
-import { AD_BLOCKS } from "./sponsored-selectors";
-
+// block the scanner has marked with the given attribute. main.ts passes the
+// same attribute to the hider, so the two cannot drift apart.
 const SELECTOR_SEPARATOR = ",\n";
 const HIDING_DECLARATION = "display: none !important";
 
@@ -13,5 +11,3 @@ export function hidingStylesheet(
   const selectors = [...adBlocks, `[${hiddenAttribute}]`];
   return `${selectors.join(SELECTOR_SEPARATOR)} {\n  ${HIDING_DECLARATION};\n}\n`;
 }
-
-export const STYLESHEET = hidingStylesheet(AD_BLOCKS, HIDDEN);

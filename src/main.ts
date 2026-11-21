@@ -11,6 +11,7 @@ import { StyleElement } from "./hide-sponsored/page-style";
 import { SponsoredScanner } from "./hide-sponsored/scanner";
 import { HIDDEN } from "./hide-sponsored/hidden-marker";
 import {
+  AD_BLOCKS,
   SEARCH_BLOCK,
   SEARCH_LABELS,
   SEARCH_TEXT_LABELS,
@@ -19,12 +20,12 @@ import {
   WIDGET_TEXT_LABELS,
 } from "./hide-sponsored/sponsored-selectors";
 import { SPONSORED_WORDS } from "./hide-sponsored/sponsored-words";
-import { STYLESHEET } from "./hide-sponsored/stylesheet";
+import { hidingStylesheet } from "./hide-sponsored/stylesheet";
 import { AnyRule } from "./hide-sponsored/sponsored-rule";
 import { TrimmedLowercase } from "./hide-sponsored/text-normalizer";
 import { WordLabels } from "./hide-sponsored/word-labels";
 
-function hideSponsored(): Enhancement {
+function hideSponsored(hidden: string): Enhancement {
   const finder = new SelectorFinder();
   const normalizer = new TrimmedLowercase();
   const words = (selector: string) =>
@@ -37,13 +38,13 @@ function hideSponsored(): Enhancement {
   ]);
   return new HideSponsored(
     document.documentElement,
-    new StyleElement(document, STYLESHEET),
-    new SponsoredScanner(rule, new AttributeHider(HIDDEN)),
+    new StyleElement(document, hidingStylesheet(AD_BLOCKS, hidden)),
+    new SponsoredScanner(rule, new AttributeHider(hidden)),
     new NodeWatcher((callback) => new MutationObserver(callback), document),
   );
 }
 
 // A new enhancement is a new class and a new line here.
-const enhancements: Enhancement[] = [hideSponsored()];
+const enhancements: Enhancement[] = [hideSponsored(HIDDEN)];
 
 for (const enhancement of enhancements) enhancement.start();
