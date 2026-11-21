@@ -7,17 +7,17 @@ import { LabelRule } from "./hide-sponsored/label-rule";
 import { NodeWatcher } from "./hide-sponsored/node-watcher";
 import { StyleElement } from "./hide-sponsored/page-style";
 import { SponsoredScanner } from "./hide-sponsored/scanner";
+import { HIDDEN } from "./hide-sponsored/hidden-marker";
 import {
-  HIDDEN,
   SEARCH_BLOCK,
   SEARCH_LABELS,
   SEARCH_TEXT_LABELS,
-  SPONSORED_WORDS,
-  STYLESHEET,
   WIDGET_BLOCK,
   WIDGET_LABELS,
   WIDGET_TEXT_LABELS,
-} from "./hide-sponsored/sponsored-markers";
+} from "./hide-sponsored/sponsored-selectors";
+import { SPONSORED_WORDS } from "./hide-sponsored/sponsored-words";
+import { STYLESHEET } from "./hide-sponsored/stylesheet";
 import { AnyRule } from "./hide-sponsored/sponsored-rule";
 import { TextLabelRule } from "./hide-sponsored/text-label-rule";
 

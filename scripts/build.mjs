@@ -2,20 +2,25 @@
 // the folder Chrome loads with "Load unpacked".
 import { build } from "esbuild";
 import { cp, mkdir, rm } from "node:fs/promises";
+import {
+  BUILD_TARGET,
+  CONTENT_ENTRY,
+  CONTENT_SOURCE,
+  OUTPUT_DIR,
+  STATIC_DIR,
+} from "./build-config.mjs";
 
-const outdir = "dist";
-
-await rm(outdir, { recursive: true, force: true });
-await mkdir(outdir, { recursive: true });
+await rm(OUTPUT_DIR, { recursive: true, force: true });
+await mkdir(OUTPUT_DIR, { recursive: true });
 await build({
-  entryPoints: { content: "src/main.ts" },
-  outdir,
+  entryPoints: { [CONTENT_ENTRY]: CONTENT_SOURCE },
+  outdir: OUTPUT_DIR,
   bundle: true,
   format: "iife",
-  target: "chrome126",
+  target: BUILD_TARGET,
   minify: false,
   sourcemap: false,
   legalComments: "none",
   logLevel: "info",
 });
-await cp("static", outdir, { recursive: true });
+await cp(STATIC_DIR, OUTPUT_DIR, { recursive: true });

@@ -4,6 +4,8 @@ export interface PageStyle {
   install(): void;
 }
 
+const STYLE_TAG = "style";
+
 export class StyleElement implements PageStyle {
   constructor(
     private readonly document: Document,
@@ -11,7 +13,7 @@ export class StyleElement implements PageStyle {
   ) {}
 
   install(): void {
-    const style = this.document.createElement("style");
+    const style = this.document.createElement(STYLE_TAG);
     style.textContent = this.css;
     this.document.documentElement.append(style);
   }
