@@ -15,10 +15,20 @@ const OBSERVED_CHANGES: MutationObserverInit = {
 };
 
 function reportable(node: Node): Element | null {
-  if (node.nodeType === ELEMENT_NODE) return node as Element;
-  if (node.nodeType === TEXT_NODE && node.textContent?.trim())
-    return node.parentElement;
-  return null;
+  return node.nodeType === ELEMENT_NODE ? (node as Element) : textParent(node);
+}
+
+// Text with words in it stands for its parent. Anything else is not reported.
+function textParent(node: Node): Element | null {
+  return isWordedText(node) ? node.parentElement : null;
+}
+
+function isWordedText(node: Node): boolean {
+  return node.nodeType === TEXT_NODE && hasWords(node);
+}
+
+function hasWords(node: Node): boolean {
+  return Boolean(node.textContent?.trim());
 }
 
 export class NodeWatcher implements Watcher {
