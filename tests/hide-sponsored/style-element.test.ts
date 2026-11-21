@@ -1,4 +1,4 @@
-import { StyleElement } from "../../src/hide-sponsored/page-style";
+import { StyleElement } from "../../src/hide-sponsored/style-element";
 
 describe("StyleElement", () => {
   it("adds its stylesheet to the root element, which exists before the head", () => {

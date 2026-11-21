@@ -1,9 +1,7 @@
 // Reports every element Amazon adds to the page, as the parser streams it in
 // and as later results load. Text that arrives on its own is reported as its
 // parent, since that is when a label first reads "Sponsored".
-export interface Watcher {
-  watch(changed: (element: Element) => void): void;
-}
+import type { Watcher } from "./watcher";
 
 export type ObserverFactory = (callback: MutationCallback) => MutationObserver;
 

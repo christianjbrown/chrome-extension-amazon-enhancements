@@ -1,4 +1,4 @@
-import { AttributeHider } from "../../src/hide-sponsored/hider";
+import { AttributeHider } from "../../src/hide-sponsored/attribute-hider";
 
 describe("AttributeHider", () => {
   it("marks the block with its attribute and leaves it in place", () => {

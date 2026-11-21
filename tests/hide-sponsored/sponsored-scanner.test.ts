@@ -1,4 +1,4 @@
-import { SponsoredScanner } from "../../src/hide-sponsored/scanner";
+import { SponsoredScanner } from "../../src/hide-sponsored/sponsored-scanner";
 
 describe("SponsoredScanner", () => {
   it("hides every block the rule finds in the root", () => {

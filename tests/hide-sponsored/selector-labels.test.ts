@@ -1,4 +1,4 @@
-import { SelectorFinder } from "../../src/hide-sponsored/element-finder";
+import { SelectorFinder } from "../../src/hide-sponsored/selector-finder";
 import { SelectorLabels } from "../../src/hide-sponsored/selector-labels";
 
 describe("SelectorLabels", () => {
